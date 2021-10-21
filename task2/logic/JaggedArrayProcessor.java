@@ -5,7 +5,7 @@ import by.epamtc.stanislavmelnikov.task2.entity.SortingDirection;
 
 import java.util.function.Function;
 
-public class JaggedArrayProcessor {
+public class JaggedArrayProcessor implements IJagged {
     //метод вычисляет сумму элементов строки
     public int countSumElements(int[] arrayString) {
         int sum = 0;
