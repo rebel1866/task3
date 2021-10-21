@@ -12,22 +12,22 @@ class ArrayLogicTest {
     @Test
     void sortBubble() {
         ArrayLogic arrayLogic = new ArrayLogic();
-        int[] arrayActual = arrayLogic.sortBubble(testArray);
-        Assertions.assertTrue(Arrays.equals(arrayExpected, arrayActual));
+        arrayLogic.sortBubble(testArray);
+        Assertions.assertTrue(Arrays.equals(arrayExpected, testArray));
     }
 
     @Test
     void sortBySelections() {
         ArrayLogic arrayLogic = new ArrayLogic();
-        int[] arrayActual = arrayLogic.sortBySelections(testArray);
-        Assertions.assertTrue(Arrays.equals(arrayExpected, arrayActual));
+        arrayLogic.sortBySelections(testArray);
+        Assertions.assertTrue(Arrays.equals(arrayExpected, testArray));
     }
 
     @Test
     void sortShellMethod() {
         ArrayLogic arrayLogic = new ArrayLogic();
-        int[] arrayActual = arrayLogic.sortShellMethod(testArray);
-        Assertions.assertTrue(Arrays.equals(arrayExpected, arrayActual));
+        arrayLogic.sortShellMethod(testArray);
+        Assertions.assertTrue(Arrays.equals(arrayExpected, testArray));
     }
 
     @Test
