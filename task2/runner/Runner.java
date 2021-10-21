@@ -13,7 +13,7 @@ public class Runner {
     public static void main(String[] args) {
         ConsoleOutput consoleOutput = new ConsoleOutput();
         DataScanner dataScanner = new DataScanner(consoleOutput);
-        JaggedArrayProcessor arrayProcessor = new JaggedArrayProcessor();
+        IJagged arrayProcessor = new JaggedArrayProcessor();
         Function<int[], Integer> functionSumElements = x -> arrayProcessor.countSumElements(x);
         Function<int[], Integer> functionMaxElements = x -> arrayProcessor.findStringLimitValue(x, LimitValue.MAX);
         Function<int[], Integer> functionMinElements = x -> arrayProcessor.findStringLimitValue(x, LimitValue.MIN);
