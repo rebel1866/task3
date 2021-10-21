@@ -12,38 +12,47 @@ public class Runner {
     private static DataScanner dataScanner = new DataScanner(consoleOutput);
 
     public static void main(String[] args) {
-        int[] array = runInputMethod();
-        int[] sortedArray = runSortingMethods(array);
-        runSearchingMethods(sortedArray);
-        runArithmeticsMethods(sortedArray);
+        runSortingMethods();
+        runSearchingMethods();
+        runArithmeticsMethods();
     }
 
-    public static int[] runInputMethod() {
+    public static int[] runInputMethodConsole() {
         consoleOutput.printMessage("Input numbers: ");
         int[] array = dataScanner.inputInt();
-        //получение массива из файла
-        int[] array1 = dataScanner.extractNumbersFromFile("D://test.txt");
-        consoleOutput.printMessage("Введите длину массива, а также максимальное и минимальное допустимое значение: ");
-        int[] params = dataScanner.inputInt();
-        // получение массива путем случайной генерации
-        int[] array2 = dataScanner.generateRandomArray(params[0], params[1], params[2]);
         return array;
     }
 
-    public static int[] runSortingMethods(int[] array) {
-        consoleOutput.printMessage("Sorting bubble: ");
-        int[] arraySortedBubble = arrayLogic.sortBubble(array);
-        consoleOutput.printNumbers(arraySortedBubble);
-        consoleOutput.printMessage("Sorting by selections: ");
-        int[] arraySortedSelections = arrayLogic.sortBySelections(array);
-        consoleOutput.printNumbers(arraySortedSelections);
-        consoleOutput.printMessage("Sorting by Shell method: ");
-        int[] arraySortedShell = arrayLogic.sortShellMethod(array);
-        consoleOutput.printNumbers(arraySortedShell);
-        return arraySortedShell;
+    public static int[] runInputFile() {
+        int[] array = dataScanner.extractNumbersFromFile("D://test.txt");
+        return array;
     }
 
-    public static void runSearchingMethods(int[] array) {
+    public static int[] runInputRandom() {
+        consoleOutput.printMessage("Введите длину массива, а также максимальное и минимальное допустимое значение: ");
+        int[] params = dataScanner.inputInt();
+        int[] array = dataScanner.generateRandomArray(params[0], params[1], params[2]);
+        return array;
+    }
+
+    public static void runSortingMethods() {
+        int[] array = runInputMethodConsole();
+        consoleOutput.printMessage("Sorting bubble: ");
+        arrayLogic.sortBubble(array);
+        consoleOutput.printNumbers(array);
+        consoleOutput.printMessage("Sorting by selections: ");
+        int[] array1 = runInputMethodConsole();
+        arrayLogic.sortBySelections(array1);
+        consoleOutput.printNumbers(array1);
+        int[] array2 = runInputMethodConsole();
+        consoleOutput.printMessage("Sorting by Shell method: ");
+        arrayLogic.sortShellMethod(array2);
+        consoleOutput.printNumbers(array2);
+    }
+
+    public static void runSearchingMethods() {
+        int[] array = runInputMethodConsole();
+        arrayLogic.sortBubble(array);
         consoleOutput.printMessage("Enter number to search: ");
         int numberToSearch = dataScanner.inputInt()[0];
         int searchResult = arrayLogic.searchBinary(array, numberToSearch);
@@ -57,7 +66,9 @@ public class Runner {
         consoleOutput.printNumbers(min);
     }
 
-    public static void runArithmeticsMethods(int[] array) {
+    public static void runArithmeticsMethods() {
+        int[] array = runInputMethodConsole();
+        arrayLogic.sortBubble(array);
         consoleOutput.printMessage("All simple numbers in array: ");
         List<Integer> simpleNumbers = arrayLogic.calculateSimpleNumbers(array);
         consoleOutput.printNumbers(simpleNumbers);
